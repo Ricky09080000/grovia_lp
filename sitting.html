@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | シッティング</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- デザイン設定 --- */
+        :root { --sit-yellow: #FFD700; --bg-color: #fffde7; --text-color: #333; --water-blue: #008C99; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 120px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; vertical-align: bottom; }
+        
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+
+        /* 黄帯ヘッダー */
+        .page-header { background-color: var(--sit-yellow); padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-link { color: #333; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+
+        .main-visual { width: 100%; height: auto; }
+        .content { padding: 30px 20px; }
+        h2 { color: #f9a825; font-size: 1.2rem; border-bottom: 2px solid var(--sit-yellow); padding-bottom: 5px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; font-family: 'Shippori Mincho', serif; }
+
+        /* 特徴カード */
+        .feature-card { background: #fff; border-radius: 15px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .feature-head { display: flex; align-items: center; margin-bottom: 10px; color: #d84315; font-weight: bold; }
+        .feature-icon { font-size: 1.5rem; margin-right: 10px; }
+        .feature-title { font-size: 1rem; }
+        .feature-text { font-size: 0.85rem; color: #555; margin: 0; text-align: justify; }
+
+        /* サービス内容リスト */
+        .service-list { background: #fff8e1; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #ffe57f; }
+        .service-item { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 0.85rem; }
+        .service-item::before { content: '✨'; position: absolute; left: 0; }
+
+        /* 固定フッター */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+        .nav-link { background: white; color: #f9a825; width: 80%; max-width: 400px; padding: 10px; text-align: center; border-radius: 30px; border: 1px solid var(--sit-yellow); font-size: 0.85rem; font-weight: bold; pointer-events: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link"><span class="back-arrow">◀</span> シッティング</a>
+        </div>
+
+        <img src="header_visual.jpg" alt="Sitting" class="main-visual">
+
+        <div class="content">
+            <p style="font-weight:bold; color:#f9a825; text-align:center; font-family:'Shippori Mincho'; font-size:1.1rem; margin-bottom:30px;">
+                遊びの中に、「学び」と「挑戦」を。<br>Growvia流シッティングで育む心の土台。
+            </p>
+
+            <h2>Growviaシッティングの3つの軸</h2>
+            
+            <div class="feature-card">
+                <div class="feature-head"><span class="feature-icon">⚽</span><span class="feature-title">「運動・身体活動」の習慣</span></div>
+                <p class="feature-text">
+                    ただ室内で過ごすだけでなく、積極的な屋外活動を取り入れます。公園での遊具遊びや、シッティング中に追加できる「スイミング・運動能力向上レッスン」を通じ、お子様の運動習慣と達成感を育みます。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-head"><span class="feature-icon">🧸</span><span class="feature-title">「非認知能力」を引き出す遊び</span></div>
+                <p class="feature-text">
+                    お子様の「やってみたい！」という好奇心を最優先に考えたシッティングです。創造的な遊びや知育サポートを通じ、自己肯定感、やり抜く力、思考力を日常の中で自然と高めていきます。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-head"><span class="feature-icon">🗺️</span><span class="feature-title">「本物の体験」お出かけ代行</span></div>
+                <p class="feature-text">
+                    忙しいご両親に代わり、アミューズメント施設や科学館などの「お出かけシッティング」も承ります。多様な場所での刺激は、お子様の感性を広げ、社会性を学ぶ貴重な機会となります。
+                </p>
+            </div>
+
+            <h2>具体的なサポート内容</h2>
+            <div class="service-list">
+                <div class="service-item"><strong>教育・発達サポート：</strong>知育遊び、メンタルサポート</div>
+                <div class="service-item"><strong>生活サポート：</strong>寝かしつけ、お風呂・食事サポート</div>
+                <div class="service-item"><strong>送迎サービス：</strong>保育園、学校、習い事への安心送迎</div>
+                <div class="service-item"><strong>成長の共有：</strong>活動中の様子や素敵な瞬間をスマホ撮影データで添付</div>
+            </div>
+
+            <div style="background:#f9f9f9; padding:15px; border-radius:10px; font-size:0.85rem; margin-top:30px; border-left: 4px solid #fbc02d;">
+                <strong>💡 リッキーさんならではの関わり:</strong><br>
+                2,000件以上の実績を持つコーチが、お子様の人見知りや「苦手」な事にも優しく寄り添います。遊具遊びが苦手だった子が自分から挑戦できるようになるなど、心の成長を第一に考えた関わりをお約束します。
+            </div>
+        </div>
+        <div style="margin-top: 50px; text-align: center; background: #fff; padding: 25px 15px; border-radius: 20px; border: 1px solid #eee;">
+    <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">実際のお出かけ先や活動の様子は</p>
+    <p style="font-weight: bold; font-size: 1.1rem; margin-bottom: 20px;">公式Instagramで公開中！</p>
+    
+    <a href="https://www.instagram.com/" target="_blank" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 12px 25px; border-radius: 50px; font-weight: bold; text-decoration: none; width: 80%; margin: 0 auto; box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);">
+        <span style="font-size: 1.3rem; margin-right: 10px;">📸</span> 
+        最新の活動を見る
+    </a>
+    
+    <p style="font-size: 0.75rem; color: #888; margin-top: 15px;">
+        #森林公園 #水族館 #キャンプ体験<br>
+        お子様の「最高の一枚」をチェック
+    </p>
+</div>
+
+        <div class="fixed-footer">
+            <a href="price.html" class="nav-link">シッティングの詳しい料金を見る ＞</a>
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

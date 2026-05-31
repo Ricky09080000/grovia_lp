@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | 代表プロフィール</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* ▼▼▼ テーマカラー（オレンジ：情熱・人柄） ▼▼▼ */
+        :root { --main-color: #FF9800; --bg-color: #fffaf0; --text-color: #333; }
+        
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 100px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; }
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+
+        /* ヘッダー */
+        .page-header { background-color: var(--main-color); padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-link { color: white; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+
+        /* プロフィール写真エリア */
+        .profile-hero {
+            position: relative; text-align: center; padding-top: 30px;
+            background-image: url('header_visual.jpg'); background-size: cover; padding-bottom: 40px;
+        }
+        .profile-hero::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,1));
+        }
+        
+        .hero-content { position: relative; z-index: 10; }
+        .profile-img { 
+            width: 140px; height: 140px; border-radius: 50%; object-fit: cover; 
+            margin: 0 auto 15px; display: block; 
+            border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        .name-jp { font-size: 1.4rem; font-weight: bold; margin-bottom: 5px; }
+        .name-en { font-family: 'Shippori Mincho', serif; color: var(--main-color); font-size: 1.1rem; }
+        .job-title { background: var(--main-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-top: 10px; font-weight: bold; }
+
+        /* コンテンツエリア */
+        .content { padding: 0 25px 30px; }
+
+        /* 見出し */
+        h2 { 
+            color: var(--main-color); font-size: 1.2rem; 
+            border-bottom: 2px solid var(--main-color); 
+            padding-bottom: 5px; margin-top: 40px; margin-bottom: 20px; 
+            font-weight: bold; font-family: 'Shippori Mincho', serif;
+        }
+
+        p { margin-bottom: 20px; text-align: justify; font-size: 0.95rem; }
+
+        /* 経歴タイムライン風 */
+        .history-item { position: relative; padding-left: 20px; margin-bottom: 20px; border-left: 3px solid #ffe0b2; }
+        .history-item::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; background: var(--main-color); border-radius: 50%; }
+        .history-title { font-weight: bold; display: block; color: #d84315; font-size: 1rem; margin-bottom: 5px; }
+        .history-desc { font-size: 0.9rem; color: #555; line-height: 1.6; }
+
+        /* 実績リスト */
+        .achieve-list { background: #fff8e1; padding: 20px; border-radius: 10px; }
+        .achieve-item { font-size: 0.9rem; margin-bottom: 8px; padding-left: 1.2em; text-indent: -1.2em; line-height: 1.6; }
+        .check-mark { color: var(--main-color); font-weight: bold; margin-right: 5px; }
+
+        /* スキルタグ */
+        .tag-container { text-align: center; margin-top: 10px; }
+        .skill-tag { display: inline-block; background: #eee; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; margin: 3px; color: #555; }
+
+        /* 固定フッター */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; justify-content: center; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link"><span class="back-arrow">◀</span> 代表プロフィール</a>
+        </div>
+
+        <div class="profile-hero">
+            <div class="hero-content">
+                <img src="profile.png" alt="Rikiya Yuda" class="profile-img">
+                <div class="name-jp">湯田 理記也</div>
+                <div class="name-en">Rikiya Yuda</div>
+                <div class="job-title">幼少期 非認知能力育成デザイナー</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>ご挨拶</h2>
+            <p>
+                はじめまして、湯田 理記也です！<br>
+                私は「先生」というよりは、お子様の成長を一番近くで一緒に喜ぶ、頼れる「パートナー」でありたいと思っています。
+            </p>
+            <p>
+                世界を旅して学んだ多様な価値観と、豊富な指導経験を掛け合わせ、お子様一人ひとりの「個性」と「自己肯定感」を大切に育みます。
+            </p>
+
+            <h2>略歴・ストーリー</h2>
+            
+            <div class="history-item">
+                <span class="history-title">大手自動車企業から世界へ</span>
+                <span class="history-desc">
+                    某大手自動車企業を退職し、海外へ挑戦。留学やワーキングホリデーを経て、バックパッカーとして世界20カ国以上を旅する。多様な文化と価値観に触れ、視野を広げる。
+                </span>
+            </div>
+
+            <div class="history-item">
+                <span class="history-title">指導者としての実績</span>
+                <span class="history-desc">
+                    帰国後、某大手フィットネスクラブにて水泳指導に従事。生後6ヶ月の赤ちゃんから中学生まで幅広く担当。<br>
+                    同時にフリーランスのシッターとしても活動し、これまでに約2,000件以上のサポートを行う。
+                </span>
+            </div>
+
+            <div class="history-item">
+                <span class="history-title">Growvia 設立</span>
+                <span class="history-desc">
+                    これまでの経験を活かし、「本物の体験」を通して子供の非認知能力を育てるブランド「Growvia」を立ち上げる。
+                </span>
+            </div>
+
+            <h2>資格・実績</h2>
+            <div class="achieve-list">
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>ベビーシッター資格　所有
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>玩具コンサルタント資格　所有
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>普通救命講習　修了
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>大手クラブでの水泳指導歴あり
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>シッターサポート実績 約2,000件　<span style="color:#d84315; font-weight:bold;">🌟５の高評価</span>
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>水恐怖症のお子様の克服サポート実績多数
+                </div>
+                <div class="achieve-item">
+                    <span class="check-mark">✔</span>東京・埼玉・神奈川・千葉　遠足対応実績多数
+                </div>
+            </div>
+
+            <h2>Plus Alpha</h2>
+            <p style="margin-bottom:10px;">実はこんな一面もあります！</p>
+            <div class="tag-container">
+                <span class="skill-tag">💻 生成AIエンジニア</span>
+                <span class="skill-tag">🏋️‍♂️ 筋トレ愛好家</span>
+            </div>
+            <p style="font-size:0.8rem; color:#666; margin-top:10px;">
+                最新のAI技術を活用した効率化や、体作りについてもアドバイスできます。
+            </p>
+        </div>
+
+        <div class="fixed-footer">
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root { --water-blue: #008C99; --bg-color: #f8fbff; --text-color: #333; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); padding-bottom: 80px; }
+        a { text-decoration: none; }
+
+        .mobile-container {
+            max-width: 480px; margin: 0 auto; background: white; min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05); position: relative; padding-bottom: 40px;
+        }
+
+        /* ヘッダー画像 */
+        .header {
+            background-image: url('header_visual.jpg');
+            background-size: cover; background-position: center; height: 260px;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            position: relative;
+        }
+        .header::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4));
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+        }
+
+        /* ブランドボックス */
+        .profile-content { margin-top: -60px; padding: 0 20px; text-align: center; position: relative; z-index: 10; }
+        .brand-box { background: white; padding: 35px 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .brand-logo { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin: 0 auto 15px auto; display: block; }
+        .brand-title { margin-bottom: 8px; text-align: center; }
+        .brand-en { font-family: 'Shippori Mincho', serif; font-size: 2.4rem; color: var(--water-blue); display: inline-block; line-height: 1; }
+        .brand-sub { margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: #555; text-align: center; display: block; }
+
+        /* キャッチコピー */
+        .catch-copy {
+            text-align: center; padding: 30px 20px 10px;
+            font-size: 1.15rem; font-weight: bold; color: #444;
+            letter-spacing: 0.05em;
+        }
+        .catch-copy span {
+            display: inline-block; padding-bottom: 6px;
+            border-bottom: 2px solid var(--water-blue);
+        }
+
+        /* 入口ボタンエリア */
+        .entrance-list { padding: 20px 20px 30px; display: flex; flex-direction: column; gap: 18px; }
+
+        .entrance-btn {
+            display: flex; align-items: center;
+            padding: 24px 20px; border-radius: 18px;
+            color: white; font-weight: bold;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative; overflow: hidden;
+        }
+        .entrance-btn:active { transform: scale(0.97); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+
+        .entrance-btn-teal  { background: linear-gradient(135deg, #008C99 0%, #00aab8 100%); }
+        .entrance-btn-orange { background: linear-gradient(135deg, #FF6B35 0%, #ff8c5a 100%); }
+
+        .entrance-icon { font-size: 2.6rem; margin-right: 18px; flex-shrink: 0; }
+
+        .entrance-text { flex: 1; }
+        .entrance-title { font-size: 1.4rem; display: block; margin-bottom: 5px; }
+        .entrance-sub { font-size: 0.78rem; opacity: 0.9; display: block; line-height: 1.5; }
+
+        .entrance-arrow { font-size: 1.2rem; opacity: 0.7; flex-shrink: 0; margin-left: 10px; }
+
+        /* 固定LINEボタン */
+        .fixed-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999;
+            display: flex; justify-content: center; padding-bottom: 20px; pointer-events: none;
+        }
+        .cta-btn {
+            background: #06C755; color: white; width: 90%; max-width: 440px;
+            padding: 15px; text-align: center; border-radius: 50px;
+            font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3);
+            pointer-events: auto; font-size: 1rem;
+        }
+
+        .footer { text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="header"></div>
+
+        <div class="profile-content">
+            <div class="brand-box">
+                <img src="logo.png" class="brand-logo" alt="Growvia Logo">
+                <div class="brand-title">
+                    <span class="brand-en">Growvia</span>
+                </div>
+                <p class="brand-sub">幼少期 非認知能力育成デザイナー</p>
+            </div>
+        </div>
+
+        <p class="catch-copy"><span>あなたはどちらですか？</span></p>
+
+        <div class="entrance-list">
+            <a href="menu.html" class="entrance-btn entrance-btn-teal">
+                <span class="entrance-icon">👨‍👩‍👧</span>
+                <span class="entrance-text">
+                    <span class="entrance-title">保護者様</span>
+                    <span class="entrance-sub">スイミング・シッティング・遠足などのサービスはこちら</span>
+                </span>
+                <span class="entrance-arrow">＞</span>
+            </a>
+
+            <a href="business.html" class="entrance-btn entrance-btn-orange">
+                <span class="entrance-icon">🏢</span>
+                <span class="entrance-text">
+                    <span class="entrance-title">事業者様</span>
+                    <span class="entrance-sub">子ども向けサービスを提供する企業・施設の方はこちら</span>
+                </span>
+                <span class="entrance-arrow">＞</span>
+            </a>
+        </div>
+
+        <div class="footer">&copy; 2026 Growvia.</div>
+
+        <div class="fixed-footer">
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

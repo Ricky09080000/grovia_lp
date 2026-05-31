@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | よくある質問</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- デザイン設定 --- */
+        :root { --water-blue: #008C99; --bg-color: #f8fbff; --text-color: #333; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 120px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; vertical-align: bottom; }
+        
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+
+        /* 水色帯ヘッダー */
+        .page-header { background-color: var(--water-blue); padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-link { color: white; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+
+        .content { padding: 30px 20px; }
+        h2 { color: var(--water-blue); font-size: 1.2rem; border-bottom: 2px solid var(--water-blue); padding-bottom: 5px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; font-family: 'Shippori Mincho', serif; }
+
+        /* FAQリスト */
+        .faq-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .faq-q { color: var(--water-blue); font-weight: bold; font-size: 1rem; margin-bottom: 10px; display: flex; }
+        .faq-q::before { content: 'Q.'; margin-right: 10px; font-size: 1.2rem; }
+        .faq-a { font-size: 0.95rem; line-height: 1.7; display: flex; color: #555; }
+        .faq-a::before { content: 'A.'; margin-right: 10px; font-size: 1.2rem; font-weight: bold; color: #f9a825; }
+
+        /* 固定フッター */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+        .nav-link { background: white; color: var(--water-blue); width: 80%; max-width: 400px; padding: 10px; text-align: center; border-radius: 30px; border: 1px solid var(--water-blue); font-size: 0.85rem; font-weight: bold; pointer-events: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link"><span class="back-arrow">◀</span> よくある質問 (FAQ)</a>
+        </div>
+
+        <div class="content">
+            <p style="font-weight:bold; color:var(--water-blue); text-align:center; font-family:'Shippori Mincho'; font-size:1.1rem; margin-bottom:30px;">
+                安心してお任せいただくための、<br>Ｑ＆Ａ。
+            </p>
+
+            <h2>サービスについて</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">何歳から利用できますか？</div>
+                <div class="faq-a">シッティングは生後3ヶ月から承っております。スイミングに関しては、基本的に3歳から小学生が対象ですが、夏季シーズンは0歳〜2歳未満のお子様も対応可能です。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">シッティング中にスイミングをお願いできますか？</div>
+                <div class="faq-a">はい、可能です！シッティング中にオプションとして45分のスイミングパーソナルを追加いただけます（+1,500円）。送迎や着替えサポートも一貫して行いますのでご安心ください。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">人見知りが激しいのですが大丈夫でしょうか？</div>
+                <div class="faq-a">ご安心ください！リッキーさんは2,000件以上のシッティング実績があり、人見知りのお子様が笑顔でお見送りできるようになった事例100%でございます。</div>
+            </div>
+
+            <h2>予約・お支払いについて</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">前日の予約でも対応してもらえますか？</div>
+                <div class="faq-a">はい、スケジュールに空きがあれば可能です。前日予約（+1,000円）も受け付けておりますので、まずはLINEにてご相談ください。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">お支払い方法は何がありますか？</div>
+                <div class="faq-a">現金、銀行振込、PayPay、クレジットカードからお選びいただけます。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">キャンセル料はいつから発生しますか？</div>
+                <div class="faq-a">ご予約の48時間前までは無料です。48時間〜24時間前までは50%、24時間以内（当日など）は100%のキャンセル料を頂戴しております。</div>
+            </div>
+
+            <h2>その他</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">交通費はどのように計算されますか？</div>
+                <div class="faq-a">ご依頼料金とは別に、往復分の交通費を実費にて頂戴しております。お友達と一緒にレッスンを受ける場合は、交通費を折半していただくことも可能です。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">怪我や緊急時の対応はどうなっていますか？</div>
+                <div class="faq-a">Growviaでは安全第一の指導を徹底し、代表は普通救命講習も修了しております。万が一の際は近隣の医療機関を利用させていただきます。また、遠足プラン等では傷害保険にも加入しております。</div>
+            </div>
+
+        </div>
+
+        <div class="fixed-footer">
+            <a href="voice.html" class="nav-link">保護者様のリアルな声を見る ＞</a>
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで直接質問する</a>
+        </div>
+    </div>
+</body>
+</html>

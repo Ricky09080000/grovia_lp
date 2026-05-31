@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | 事業者様向けパートナープログラム</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 変数・リセット ===== */
+        :root {
+            --teal: #008C99;
+            --teal-light: #e8f7f8;
+            --teal-dark: #006d78;
+            --orange: #FF6B35;
+            --orange-light: #fff0eb;
+            --bg: #f8fbff;
+            --dark: #1a1a1a;
+            --text: #333;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        a { text-decoration: none; color: inherit; }
+        p { margin: 0 0 1em; }
+        h1, h2, h3 { margin: 0 0 0.6em; line-height: 1.3; }
+
+        .lp-wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* ===== セクション共通 ===== */
+        .sec { padding: 52px 24px; }
+        .sec-title {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.55rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .sec-sub {
+            text-align: center;
+            font-size: 0.82rem;
+            color: #777;
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(160deg, #005f6b 0%, #008C99 55%, #00aab8 100%);
+            padding: 44px 24px 52px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -80px; left: -40px;
+            width: 280px; height: 280px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .hero-logo {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        }
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.65rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .hero-lead {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.88);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+        .hero-btns { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
+        .btn-primary {
+            display: block;
+            background: white;
+            color: var(--teal);
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+        .btn-primary:active { transform: scale(0.97); }
+        .btn-outline {
+            display: block;
+            border: 2px solid rgba(255,255,255,0.8);
+            color: white;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 50px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .btn-outline:active { transform: scale(0.97); }
+        .btn-sub { font-size: 0.72rem; opacity: 0.85; display: block; margin-top: 3px; }
+
+        /* ===== PROBLEMS ===== */
+        .sec-problems { background: #f0f9fb; }
+        .problem-list { display: flex; flex-direction: column; gap: 14px; }
+        .problem-item {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 18px 18px 22px;
+            display: flex; align-items: flex-start; gap: 14px;
+            box-shadow: 0 2px 10px rgba(0,140,153,0.07);
+        }
+        .problem-num {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--teal);
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .problem-body .p-title { font-weight: bold; font-size: 0.95rem; margin-bottom: 4px; }
+        .problem-body .p-desc { font-size: 0.82rem; color: #666; line-height: 1.65; margin: 0; }
+
+        /* ===== BEFORE/AFTER ===== */
+        .ba-wrap { display: flex; flex-direction: column; gap: 16px; }
+        .ba-card { border-radius: 14px; padding: 22px 20px; }
+        .ba-card.before { background: var(--orange-light); }
+        .ba-card.after  { background: var(--teal-light); }
+        .ba-label {
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .ba-card.before .ba-label { color: var(--orange); }
+        .ba-card.after  .ba-label { color: var(--teal); }
+        .ba-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+        .ba-list li { font-size: 0.88rem; display: flex; align-items: flex-start; gap: 8px; line-height: 1.55; }
+        .ba-arrow-wrap { text-align: center; font-size: 1.8rem; color: var(--teal); line-height: 1; margin: 4px 0; }
+
+        /* ===== PLANS ===== */
+        .sec-plans { background: var(--dark); }
+        .sec-plans .sec-title { color: white; }
+        .sec-plans .sec-sub { color: #888; }
+        .plan-list { display: flex; flex-direction: column; gap: 16px; }
+        .plan-card {
+            background: #2a2a2a;
+            border-radius: 16px;
+            padding: 24px 20px;
+            border: 1px solid #3a3a3a;
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card.featured {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+        .plan-rec-badge {
+            position: absolute; top: 0; right: 0;
+            background: var(--orange);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: bold;
+            padding: 5px 14px;
+            border-bottom-left-radius: 10px;
+            letter-spacing: 0.06em;
+        }
+        .plan-name { font-size: 0.75rem; font-weight: bold; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+        .plan-card.featured .plan-name { color: rgba(255,255,255,0.85); }
+        .plan-price {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .plan-price-sub { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-bottom: 16px; }
+        .plan-features { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+        .plan-features li { font-size: 0.84rem; color: rgba(255,255,255,0.85); display: flex; align-items: flex-start; gap: 8px; }
+        .plan-features li::before { content: '✓'; color: var(--orange); font-weight: bold; flex-shrink: 0; }
+        .plan-card.featured .plan-features li::before { color: white; }
+        .plan-btn {
+            display: block;
+            background: var(--orange);
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 13px;
+            border-radius: 50px;
+            text-align: center;
+        }
+        .plan-card.featured .plan-btn { background: white; color: var(--teal); }
+
+        /* ===== FLOW ===== */
+        .flow-list { display: flex; flex-direction: column; gap: 0; }
+        .flow-item { display: flex; gap: 16px; position: relative; }
+        .flow-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .flow-num {
+            width: 40px; height: 40px;
+            background: var(--teal);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            position: relative; z-index: 1;
+        }
+        .flow-line { width: 2px; background: #e0f0f2; flex: 1; margin: 4px 0; min-height: 24px; }
+        .flow-item:last-child .flow-line { display: none; }
+        .flow-body { padding-bottom: 28px; flex: 1; }
+        .flow-title { font-weight: bold; font-size: 0.97rem; margin-bottom: 5px; color: var(--teal); }
+        .flow-desc { font-size: 0.83rem; color: #666; margin: 0; line-height: 1.65; }
+        .flow-tag {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        /* ===== PROOF ===== */
+        .sec-proof { background: var(--teal); }
+        .sec-proof .sec-title { color: white; }
+        .sec-proof .sec-sub { color: rgba(255,255,255,0.75); }
+        .proof-list { display: flex; flex-direction: column; gap: 18px; }
+        .proof-card {
+            background: rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 22px 20px;
+            border-left: 4px solid var(--orange);
+        }
+        .proof-quote { font-size: 0.9rem; color: white; line-height: 1.8; margin-bottom: 14px; font-style: italic; }
+        .proof-attr { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+        .proof-attr strong { color: white; }
+        .proof-stars { color: var(--orange); font-size: 1rem; margin-bottom: 10px; letter-spacing: 2px; }
+        .kpi-row {
+            display: flex; gap: 10px; margin-top: 28px;
+        }
+        .kpi-card {
+            flex: 1;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 16px 10px;
+            text-align: center;
+        }
+        .kpi-num {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .kpi-label { font-size: 0.72rem; color: rgba(255,255,255,0.8); }
+
+        /* ===== REFUND ===== */
+        .sec-refund { background: var(--bg); }
+        .refund-box {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 20px;
+            box-shadow: 0 4px 20px rgba(0,140,153,0.08);
+            text-align: center;
+        }
+        .refund-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+        .refund-title { font-size: 1.1rem; font-weight: bold; color: var(--text); margin-bottom: 20px; }
+        .refund-tiers { display: flex; gap: 12px; margin-bottom: 20px; }
+        .refund-tier { flex: 1; border-radius: 12px; padding: 18px 10px; text-align: center; }
+        .refund-tier.full { background: var(--teal-light); }
+        .refund-tier.half { background: var(--orange-light); }
+        .refund-pct {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            line-height: 1;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .refund-tier.full .refund-pct { color: var(--teal); }
+        .refund-tier.half .refund-pct { color: var(--orange); }
+        .refund-cond { font-size: 0.75rem; color: #666; line-height: 1.5; }
+        .refund-note { font-size: 0.75rem; color: #999; line-height: 1.7; }
+
+        /* ===== FAQ ===== */
+        .sec-faq { background: #f0f9fb; }
+        .faq-list { display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,140,153,0.06); }
+        .faq-q {
+            padding: 18px 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex; align-items: flex-start; gap: 12px;
+            user-select: none;
+        }
+        .faq-q-mark { color: var(--teal); font-size: 1.1rem; flex-shrink: 0; font-family: 'Shippori Mincho', serif; }
+        .faq-q-text { flex: 1; }
+        .faq-toggle { color: var(--teal); font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; }
+        .faq-item.open .faq-toggle { transform: rotate(180deg); }
+        .faq-a {
+            display: none;
+            padding: 0 20px 18px 20px;
+            font-size: 0.84rem;
+            color: #555;
+            line-height: 1.75;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 14px;
+        }
+        .faq-item.open .faq-a { display: block; }
+
+        /* ===== CTA ===== */
+        .sec-cta { background: var(--dark); text-align: center; }
+        .sec-cta .sec-title { color: white; }
+        .sec-cta .sec-sub { color: #888; }
+        .cta-btns { display: flex; flex-direction: column; gap: 12px; }
+        .btn-cta-main {
+            display: block;
+            background: var(--teal);
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 16px 20px;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,140,153,0.35);
+        }
+        .btn-cta-outline {
+            display: block;
+            border: 2px solid rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.85);
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 13px 20px;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        /* ===== FOOTER ===== */
+        .lp-footer {
+            background: var(--teal);
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .lp-footer-logo {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .lp-footer-sub { font-size: 0.75rem; color: rgba(255,255,255,0.75); margin-bottom: 14px; }
+        .lp-footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; }
+        .lp-footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.8); }
+        .lp-footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.6); }
+    </style>
+</head>
+<body>
+<div class="lp-wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="logo.png" alt="Growvia" class="hero-logo">
+        <span class="hero-badge">FOR BUSINESS PARTNERS</span>
+        <h1>問い合わせ対応、もうスタッフが<br>
+            やらなくていい。</h1>
+        <p class="hero-lead">
+            保育園・幼稚園・学童・習い事施設の<br>
+            「よくある質問」に、AIが24時間自動で答えます<br>
+            現役の保育者・指導者が設計した<br>
+            子ども施設に特化したAIサービスです。
+        </p>
+        <div class="hero-btns">
+            <a href="【デモBotURL】" class="btn-primary">
+                AIデモを無料で体験する
+                <span class="btn-sub">▷ 登録不要・30秒でお試しいただけます</span>
+            </a>
+            <a href="【LINEのURL】" class="btn-outline">
+                LINEで無料相談
+                <span class="btn-sub">▷ 当日中にご返信します</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section class="sec sec-problems">
+        <span class="tag">こんなお悩みありませんか？</span>
+        <h2 class="sec-title">子ども向け施設・事業者が<br>抱えるリアルな課題</h2>
+        <p class="sec-sub">多くの施設様から寄せられるお声です</p>
+        <div class="problem-list">
+            <div class="problem-item">
+                <span class="problem-num">01</span>
+                <div class="problem-body">
+                    <p class="p-title">営業時間外の問い合わせに対応できていない</p>
+                    <p class="p-desc">夜中・休日の問い合わせは翌日まで放置。機会損失が続いている。</p>
+                </div>
+            </div>
+            <div class="problem-item">
+                <span class="problem-num">02</span>
+                <div class="problem-body">
+                    <p class="p-title">同じ質問への返信に毎日時間が取られている</p>
+                    <p class="p-desc">「料金は？」「何歳から？」など、スタッフが毎回手動で返信している。</p>
+                </div>
+            </div>
+            <div class="problem-item">
+                <span class="problem-num">03</span>
+                <div class="problem-body">
+                    <p class="p-title">LINE・メールの返信対応が業務を圧迫している</p>
+                    <p class="p-desc">本来の業務に集中できず、対応漏れや返信遅れが発生している。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE AFTER -->
+    <section class="sec">
+        <span class="tag">導入前後の変化</span>
+        <h2 class="sec-title">AI導入で<br>何が変わるか</h2>
+        <p class="sec-sub">パートナー施設様の実感をもとにまとめました</p>
+        <div class="ba-wrap">
+            <div class="ba-card before">
+                <p class="ba-label">BEFORE ／ 導入前</p>
+                <ul class="ba-list">
+                    <li>✕ 夜中・休日の問い合わせを翌日まで放置</li>
+                    <li>✕ スタッフが毎回手動で同じ質問に返信</li>
+                    <li>✕ 返信遅れで申し込み機会を損失</li>
+                    <li>✕ 問い合わせ対応に1日1〜2時間消費</li>
+                </ul>
+            </div>
+            <div class="ba-arrow-wrap">↓</div>
+            <div class="ba-card after">
+                <p class="ba-label">AFTER ／ 導入後</p>
+                <ul class="ba-list">
+                    <li>✓ 24時間365日、AIが即座に自動返答</li>
+                    <li>✓ よくある質問の約8割をAIが対応</li>
+                    <li>✓ 深夜の問い合わせも機会を逃さない</li>
+                    <li>✓ スタッフは本当に必要な対応に集中</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="sec sec-plans">
+        <span class="tag" style="background:var(--orange);">PLANS</span>
+        <h2 class="sec-title">料金プラン</h2>
+        <p class="sec-sub">施設の規模・目的に合わせて選べます</p>
+        <div class="plan-list">
+
+            <div class="plan-card">
+                <p class="plan-name">ライト　プラン</p>
+                <p class="plan-price">月額 8,800円（税込）<span style="font-size:1rem;"> </span></p>
+                <p class="plan-price-sub">初期構築費 55,000円（税込）</p>
+                <ul class="plan-features">
+                    <li>FAQ自動回答Bot構築</li>
+                    <li>ナレッジ更新 月1回</li>
+                    <li>チャットサポート</li>
+                    <li>Web / LINE 設置（どちらか1つ）</li>
+                    <li>小規模教室・保育園・まず試したい方におすすめ</li>
+                </ul>
+                <a href="【LINEのURL】" class="plan-btn">このプランで相談する</a>
+            </div>
+
+            <div class="plan-card featured">
+                <span class="plan-rec-badge">おすすめ</span>
+                <p class="plan-name">スタンダード　プラン</p>
+                <p class="plan-price">月額 16,500円（税込）<span style="font-size:1rem;"> 〜</span></p>
+                <p class="plan-price-sub">初期構築費 88,000円（税込）</p>
+                <ul class="plan-features">
+                    <li>高精度Q&A Bot（RAG対応）</li>
+                    <li>ナレッジ更新 月3回</li>
+                    <li>月次レポート提供</li>
+                    <li>Web ＋ LINE 両方に設置</li>
+                    <li>チャットサポート</li>
+                    </li>本格的に業務効率化を図りたい事業者におすすめ</li>
+                </ul>
+                <a href="【LINEのURL】" class="plan-btn">このプランで相談する</a>
+            </div>
+
+            <div class="plan-card">
+                <p class="plan-name">短期イベントプラン</p>
+                <p class="plan-price">月額 27,500円（税込）</p>
+                <p class="plan-price-sub">初期構築費 165,000円 ／ 2ヶ月固定</p>
+                <ul class="plan-features">
+                    <li>イベント専用Bot構築</li>
+                    <li>QRコード発行（印刷物に使用可）</li>
+                    <li>ナレッジ更新 無制限</li>
+                    <li>即日対応サポート</li>
+                    <li>運動会・発表会・入園説明会など短期に対応</li>
+                </ul>
+                <a href="【LINEのURL】" class="plan-btn">詳細を問い合わせる</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FLOW -->
+    <section class="sec">
+        <span class="tag">FLOW</span>
+        <h2 class="sec-title">導入までの流れ</h2>
+        <p class="sec-sub">お問い合わせから最短2週間でスタートできます</p>
+        <div class="flow-list">
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">1</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">LINEで無料お問い合わせ</p>
+                    <p class="flow-desc">施設の種類・規模・ご要望をざっくりお伝えください。24時間以内にご返信します。</p>
+                    <span class="flow-tag">無料体験デモ</span>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">2</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">ヒアリング・お見積もり</p>
+                    <p class="flow-desc">よくある質問・サービス情報をお聞きします。ヒアリングシートまたはオンラインで対応。</p>
+                    <span class="flow-tag">初期費用決済</span>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">3</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">初期構築費のお支払い・契約締結</p>
+                    <p class="flow-desc">お見積もりにご納得いただいた後、初期構築費をお支払いいただき構築開始。</p>
+                    <span class="flow-tag">支払い完了後に着手</span>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">4</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">Bot構築・テスト（1〜2週間）</p>
+                    <p class="flow-desc">御社専用Botを構築。納品前にプレビューでご確認いただけます。修正がある場合は納品前に対応します。</p>
+                    
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">5</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">設置・運用開始（半日〜1日）</p>
+                    <p class="flow-desc">設置完了後に月額課金スタート。使い始めた日から課金されます。設置はリモートで一緒に行います。</p>
+                </div>
+            </div>
+            <div class="flow-item">
+                <div class="flow-left">
+                    <div class="flow-num">6</div>
+                    <div class="flow-line"></div>
+                </div>
+                <div class="flow-body">
+                    <p class="flow-title">月次保守・継続改善</p>
+                    <p class="flow-desc">毎月のナレッジ更新・月次レポート・改善提案を実施。Botを育てながら問い合わせ対応の品質を向上させます。。</p>
+                    <span class="flow-tag">継続サポート込み</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="sec sec-proof">
+        <span class="tag" style="background:var(--orange);">PROOF</span>
+        <h2 class="sec-title">導入施設の声</h2>
+        <p class="sec-sub">実際にパートナーとなった施設様からのご感想</p>
+        <div class="proof-list">
+            <div class="proof-card">
+                <p class="proof-stars">★★★★★</p>
+                <p class="proof-quote">「子どもたちの変化が目に見えてわかるようになりました。保護者アンケートの満足度が導入前に比べて大幅に上がり、口コミからの入園希望も増えています。スタッフも自信を持って指導できるようになったのが一番の変化です。」</p>
+                <p class="proof-attr">【屋号】代表 <strong>【氏名】</strong>様</p>
+            </div>
+            <div class="proof-card">
+                <p class="proof-stars">★★★★★</p>
+                <p class="proof-quote">「これまで"楽しさ"だけを売りにしていましたが、Growviaのプログラムを取り入れてから"育ち"をきちんと言語化できるようになりました。保護者説明会での反響がまったく変わりました。」</p>
+                <p class="proof-attr">【屋号】施設長 <strong>【氏名】</strong>様</p>
+            </div>
+    </section>
+
+    <!-- REFUND -->
+    <section class="sec sec-refund">
+        <span class="tag">POLICY</span>
+        <h2 class="sec-title">返金・解約ポリシー</h2>
+        <p class="sec-sub">安心してご契約いただけるよう明確にお約束します</p>
+        <div class="refund-box">
+            <span class="refund-icon">🛡️</span>
+            <p class="refund-title">解約のタイミングによって<br>返金対応が異なります</p>
+            <div class="refund-tiers" style="flex-direction:column; gap:10px;">
+                <div class="refund-tier full" style="display:flex; align-items:center; gap:14px; padding:16px 18px; text-align:left;">
+                    <div style="flex-shrink:0; text-align:center; min-width:60px;">
+                        <span class="refund-pct" style="font-size:1.5rem; color:var(--teal);">100%</span>
+                    </div>
+                    <div>
+                        <p style="font-weight:bold; font-size:0.88rem; margin:0 0 3px; color:var(--teal);">着手前｜ヒアリング実施前の解約</p>
+                        <p class="refund-cond" style="margin:0;">初期構築費：<strong>全額返金</strong></p>
+                    </div>
+                </div>
+                <div class="refund-tier half" style="display:flex; align-items:center; gap:14px; padding:16px 18px; text-align:left;">
+                    <div style="flex-shrink:0; text-align:center; min-width:60px;">
+                        <span class="refund-pct" style="font-size:1.5rem; color:var(--orange);">50%</span>
+                    </div>
+                    <div>
+                        <p style="font-weight:bold; font-size:0.88rem; margin:0 0 3px; color:var(--orange);">構築途中｜ヒアリング実施後・納品前の解約</p>
+                        <p class="refund-cond" style="margin:0;">初期構築費：<strong>50%を返金</strong>（残り50%は作業費として申し受けます）</p>
+                    </div>
+                </div>
+                <div class="refund-tier" style="background:#f5f5f5; display:flex; align-items:center; gap:14px; padding:16px 18px; text-align:left;">
+                    <div style="flex-shrink:0; text-align:center; min-width:60px;">
+                        <span class="refund-pct" style="font-size:1.5rem; color:#999;">－</span>
+                    </div>
+                    <div>
+                        <p style="font-weight:bold; font-size:0.88rem; margin:0 0 3px; color:#666;">納品後｜納品完了後の解約</p>
+                        <p class="refund-cond" style="margin:0 0 3px;">初期構築費：<strong>返金なし</strong></p>
+                        <p class="refund-cond" style="margin:0;">月額：<strong>翌月以降の課金を停止</strong></p>
+                    </div>
+                </div>
+            </div>
+            <p class="refund-note" style="text-align:left; margin-top:16px;">
+                📩 <strong>解約方法：</strong>解約希望月の前月末日までにメールにてご連絡ください。翌月末日をもってサービスを停止します。
+            </p>
+            <p class="refund-note" style="text-align:left; margin-top:8px;">
+                ※ Bot回答の性質上、AI回答の正確性を100%保証するものではありません。ご不満な点は月次保守で随時改善対応いたします。
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sec sec-faq">
+        <span class="tag">FAQ</span>
+        <h2 class="sec-title">よくある質問</h2>
+        <p class="sec-sub">導入前に多くいただく質問をまとめました</p>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">どんな施設・事業者様が対象ですか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    保育園・幼稚園・学童保育・スイミングスクール・子ども向けスポーツ教室・企業の子育て支援部門など、子どもと関わるあらゆる施設・事業者様を対象としています。規模の大小は問いません。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">ITが苦手でも導入できますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    はい！普段保護者の方向けの配布物にQRコードを載せる程度のITリテラシーがあれば問題なく導入できます。AIの専門知識や複雑な操作は一切不要で、マニュアルに沿って設定すれば簡単に運用開始できます。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">今使っているLINEやWebサイトに追加できますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    はい、既存のLINEリッチメニューやWebサイトに簡単に追加できます。導入時のサポートやマニュアルも充実しているので、スムーズに運用を開始できます。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">AIが間違った答えを返すことはありますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    AIは高精度な回答を提供しますが、完全に間違いがないわけではありません。誤った回答が返される可能性もありますので、知らないことは「スタッフよりご確認します」と案内します。勝手な推測で答えることはありません。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">契約の縛りや最低期間はありますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    最低契約期間は3ヶ月からとなっています。3ヶ月以降は1ヶ月単位で継続・解約が可能です。解約希望月の前月末日までにメールにてご連絡いただければ、翌月末日をもってサービスを停止します。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">途中で解約できますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    最低3ヶ月のご契約後は、前月末日までのご連絡で翌月から解約いただけます。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">複数の施設で使えますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    はい。施設ごとにBotを構築することが可能です。2施設目からは初期構築費の割引も対応しています。詳しくはお問い合わせください。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">導入後のサポートはありますか？</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-a">
+                    はい。毎月の企業情報更新・月次レポート・改善提案を実施します。チャットでのご質問は平日10〜18時に対応します。
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sec sec-cta">
+        <span class="tag" style="background:var(--orange);">無料相談受付中</span>
+        <h2 class="sec-title">まずは気軽にご相談ください</h2>
+        <p class="sec-sub">担当者が丁寧にご説明します。<br>売り込みは一切しません。</p>
+        <div class="cta-btns">
+            <a href="【LINEのURL】" class="btn-cta-main">
+                LINEで無料相談する
+                <span class="btn-sub">24時間受付 ／ 返信は当日中</span>
+            </a>
+            <a href="mailto:【メールアドレス】" class="btn-cta-outline">
+                メールで問い合わせる
+            </a>
+            <a href="index.html" class="btn-cta-outline" style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.5); font-size:0.82rem; padding:10px;">
+                ← 保護者様向けページはこちら
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="lp-footer">
+        <span class="lp-footer-logo">Growvia</span>
+        <p class="lp-footer-sub">幼少期 非認知能力育成デザイナー</p>
+        <div class="lp-footer-links">
+            <a href="index.html">保護者様向け</a>
+            <a href="【LINEのURL】">LINE相談</a>
+            <a href="mailto:【メールアドレス】">メール</a>
+        </div>
+        <p class="lp-footer-copy">&copy; 2026 Growvia.</p>
+    </footer>
+
+</div>
+
+<script>
+    function toggleFaq(el) {
+        const item = el.closest('.faq-item');
+        item.classList.toggle('open');
+    }
+</script>
+</body>
+</html>

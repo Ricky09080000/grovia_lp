@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | メニュー</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- デザイン設定 --- */
+        :root { --water-blue: #008C99; --bg-color: #f8fbff; --text-color: #333; }
+        /* 👇 LINEボタンが被らないように、下に余白(padding-bottom)を追加しました */
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); padding-bottom: 80px; }
+        a { text-decoration: none; }
+
+        .mobile-container {
+            max-width: 480px; margin: 0 auto; background: white; min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05); position: relative; padding-bottom: 40px;
+        }
+
+        /* ヘッダー画像 */
+        .header {
+            background-image: url('header_visual.jpg');
+            background-size: cover; background-position: center; height: 260px;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            position: relative;
+        }
+        .header::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4));
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+        }
+
+        /* ブランドボックス */
+        .profile-content { margin-top: -60px; padding: 0 20px; text-align: center; position: relative; z-index: 10; }
+        .brand-box { background: white; padding: 35px 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .brand-logo { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin: 0 auto 15px auto; display: block; }
+        .brand-title { margin-bottom: 8px; text-align: center; }
+        .brand-en { font-family: 'Shippori Mincho', serif; font-size: 2.4rem; color: var(--water-blue); display: inline-block; line-height: 1; }
+        .brand-jp { font-size: 1.1rem; font-weight: bold; margin-left: 8px; color: var(--water-blue); display: inline-block; }
+        .brand-sub { margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: #555; text-align: center; display: block; }
+
+        /* メニューリスト */
+        .menu-list { padding: 30px 20px; display: flex; flex-direction: column; gap: 15px; }
+
+        .menu-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            background: white; padding: 20px; border-radius: 15px;
+            border: 1px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            color: #333; font-weight: bold; transition: transform 0.2s;
+        }
+        .menu-btn:active { transform: scale(0.98); background: #f9f9f9; }
+
+        .icon { font-size: 1.4rem; margin-right: 15px; width: 30px; text-align: center; }
+        .arrow { color: #ccc; }
+
+        /* 色分け設定 */
+        .btn-orange { border-left: 5px solid #FF9800; }
+        .btn-blue   { border-left: 5px solid #00BFFF; }
+        .btn-yellow { border-left: 5px solid #FFD700; }
+        .btn-green  { border-left: 5px solid #6DAE45; }
+        .btn-gold   { border-left: 5px solid #FBC02D; }
+        .btn-insta  { border-left: 5px solid #E1306C; }
+        .btn-teal   { border-left: 5px solid #008C99; }
+
+        /* 👇 固定LINEボタンのデザイン */
+        .fixed-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999;
+            display: flex; justify-content: center; padding-bottom: 20px; pointer-events: none;
+        }
+        .cta-btn {
+            background: #06C755; color: white; width: 90%; max-width: 440px;
+            padding: 15px; text-align: center; border-radius: 50px;
+            font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3);
+            pointer-events: auto; font-size: 1rem;
+        }
+
+        .footer { text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 20px; }
+    </style>
+</head>
+<style>
+    /* ボットのボタン本体 */
+    #chatbot-bubble {
+        position: fixed; bottom: 90px; right: 20px;
+        width: 60px; height: 60px; background: var(--water-blue);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000;
+        transition: transform 0.3s ease; pointer-events: auto;
+    }
+    #chatbot-bubble:hover { transform: scale(1.1); }
+    #chatbot-bubble span { font-size: 30px; }
+
+    /* チャットウィンドウ */
+    #chatbot-window {
+        position: fixed; bottom: 160px; right: 20px;
+        width: 320px; max-width: 90vw; height: 400px;
+        background: white; border-radius: 15px; display: none;
+        flex-direction: column; box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        z-index: 1000; overflow: hidden; border: 1px solid #eee;
+    }
+
+    /* ウィンドウヘッダー */
+    .chat-header {
+        background: var(--water-blue); color: white; padding: 15px;
+        font-weight: bold; font-size: 0.9rem; display: flex; justify-content: space-between;
+    }
+
+    /* メッセージエリア */
+    .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; font-size: 0.85rem; }
+    .bot-msg { background: white; padding: 10px; border-radius: 10px; margin-bottom: 10px; border-bottom-left-radius: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+    /* 選択肢ボタン */
+    .chat-options { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .opt-btn {
+        background: white; border: 1px solid var(--water-blue); color: var(--water-blue);
+        padding: 8px; border-radius: 20px; text-align: center; cursor: pointer;
+        font-size: 0.8rem; font-weight: bold; transition: 0.2s;
+    }
+    .opt-btn:hover { background: var(--water-blue); color: white; }
+</style>
+
+<div id="chatbot-bubble" onclick="toggleChat()">
+    <span>🤖</span>
+</div>
+
+<div id="chatbot-window">
+    <div class="chat-header">
+        Growvia 質問ボット
+        <span onclick="toggleChat()" style="cursor:pointer;">✕</span>
+    </div>
+    <div class="chat-body" id="chat-body">
+        <div class="bot-msg">こんにちは！Growviaについて、気になることを選んでくださいね。</div>
+    </div>
+    <div class="chat-options">
+        <div class="opt-btn" onclick="botReply('料金について')">💰 料金を知りたい</div>
+        <div class="opt-btn" onclick="botReply('対応エリア')">📍 対応エリアは？</div>
+        <div class="opt-btn" onclick="botReply('リッキー先生について')">👤 どんな先生？</div>
+        <div class="opt-btn" onclick="botReply('直接相談')">💬 直接相談したい</div>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        const window = document.getElementById('chatbot-window');
+        window.style.display = window.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function botReply(type) {
+        const body = document.getElementById('chat-body');
+        let reply = "";
+
+        if (type === '料金について') {
+            reply = "シッティングは3,000円/1H、スイミングは6,500円/1回から承っております。お得なセット割引もあります！詳しくは料金ページをご覧ください。";
+        } else if (type === '対応エリア') {
+            reply = "東京・埼玉・神奈川・千葉の1都3県を中心に、遠足やシッティングの実績が多数ございます！";
+        } else if (type === 'リッキー先生について') {
+            reply = "世界20カ国を旅し、2,000件以上のシッティング実績を持つ「幼少期 非認知能力育成デザイナー」の湯田が担当します！";
+        } else if (type === '直接相談') {
+            reply = "公式LINEへメッセージをお送りください。リッキー本人が順次お返事いたします！";
+        }
+
+        body.innerHTML += `<div style="text-align:right; margin-bottom:10px;"><span style="background:var(--water-blue); color:white; padding:8px; border-radius:10px; font-size:0.8rem;">${type}</span></div>`;
+        setTimeout(() => {
+            body.innerHTML += `<div class="bot-msg">${reply}</div>`;
+            body.scrollTop = body.scrollHeight;
+        }, 500);
+    }
+</script>
+<body>
+    <div class="mobile-container">
+        <div class="header"></div>
+
+        <div class="profile-content">
+            <div class="brand-box">
+                <img src="logo.png" class="brand-logo" alt="Growvia Logo">
+                <div class="brand-title">
+                    <span class="brand-en">Growvia</span>
+                </div>
+                <p class="brand-sub">幼少期 非認知能力育成デザイナー</p>
+            </div>
+        </div>
+
+        <div class="menu-list">
+            <a href="concept.html" class="menu-btn btn-orange">
+                <div><span class="icon">✨</span> Growviaの想い・理念</div>
+                <span class="arrow">＞</span>
+            </a>
+            <a href="profile.html" class="menu-btn btn-orange">
+                <div><span class="icon">👤</span> 代表プロフィール</div>
+                <span class="arrow">＞</span>
+            </a>
+
+            <a href="price.html" class="menu-btn btn-gold">
+                <div><span class="icon">💰</span> 料金一覧</div>
+                <span class="arrow">＞</span>
+            </a>
+
+            <a href="swim_personal.html" class="menu-btn btn-blue">
+                <div><span class="icon">🏊</span> スイミングパーソナル</div>
+                <span class="arrow">＞</span>
+            </a>
+            <a href="swim_class.html" class="menu-btn btn-blue">
+                <div><span class="icon">🐬</span> スイミング教室 (少人数)</div>
+                <span class="arrow">＞</span>
+            </a>
+            <a href="sitting.html" class="menu-btn btn-yellow">
+                <div><span class="icon">🧸</span> シッティング</div>
+                <span class="arrow">＞</span>
+            </a>
+            <a href="expedition.html" class="menu-btn btn-green">
+                <div><span class="icon">🌲</span> 非認知能力育成遠足</div>
+                <span class="arrow">＞</span>
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank" class="menu-btn btn-insta">
+                <div><span class="icon">📸</span> 活動ギャラリー (Instagram)</div>
+                <span class="arrow">↗</span>
+            </a>
+            <a href="voice.html" class="menu-btn btn-green">
+                <div><span class="icon">🗣️</span> 保護者様の声</div>
+                <span class="arrow">＞</span>
+            </a>
+            <a href="faq.html" class="menu-btn btn-teal">
+                <div><span class="icon">❓</span> よくある質問 (FAQ)</div>
+                <span class="arrow">＞</span>
+            </a>
+        </div>
+
+        <div class="footer">&copy; 2026 Growvia.</div>
+
+        <div class="fixed-footer">
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

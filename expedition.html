@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | 非認知能力育成遠足</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root { --nature-green: #6DAE45; --bg-color: #f1f8e9; --text-color: #333; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 120px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; vertical-align: bottom; }
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .page-header { background-color: var(--nature-green); padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-link { color: white; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+        .content { padding: 30px 20px; }
+        h2 { color: var(--nature-green); font-size: 1.2rem; border-bottom: 2px solid var(--nature-green); padding-bottom: 5px; margin-top: 40px; margin-bottom: 20px; font-weight: bold; font-family: 'Shippori Mincho', serif; }
+        
+        /* 成長・影響エリア */
+        .impact-card { background: #fff; border-radius: 15px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .impact-head { display: flex; align-items: center; margin-bottom: 10px; color: #2e7d32; font-weight: bold; }
+        .impact-icon { font-size: 1.5rem; margin-right: 10px; }
+        .impact-title { font-size: 1rem; }
+        .impact-text { font-size: 0.85rem; color: #555; margin: 0; text-align: justify; }
+
+        /* サービス内容エリア */
+        .service-item { display: flex; margin-bottom: 20px; align-items: flex-start; }
+        .service-num { background: var(--nature-green); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; margin-right: 12px; flex-shrink: 0; margin-top: 4px; }
+        .service-body h3 { margin: 0 0 5px; font-size: 1rem; color: #333; }
+        .service-body p { margin: 0; font-size: 0.85rem; color: #666; }
+
+        /* 固定フッター */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+        .nav-link { background: white; color: var(--nature-green); width: 80%; max-width: 400px; padding: 10px; text-align: center; border-radius: 30px; border: 1px solid var(--nature-green); font-size: 0.85rem; font-weight: bold; pointer-events: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link"><span class="back-arrow">◀</span> 非認知能力育成遠足</a>
+        </div>
+
+        <img src="header_visual.jpg" alt="Nature Expedition" class="main-visual">
+
+        <div class="content">
+            <p style="font-weight:bold; color:var(--nature-green); text-align:center; font-family:'Shippori Mincho'; font-size:1.1rem; margin-bottom:30px;">
+                「教科書の外」にある学びが、<br>一生モノの自信になる。
+            </p>
+
+            <h2>非認知能力が育つ、Growviaの仕掛け</h2>
+            <p style="font-size: 0.85rem; margin-bottom: 20px;">
+                Growviaの遠足は、ただのお出かけではありません。専門ガイドによる安全な環境下で、お子様の「見えない力」を刺激するプログラムを組んでいます。
+            </p>
+
+            <div class="impact-card">
+                <div class="impact-head"><span class="impact-icon">🏔️</span><span class="impact-title">「やり抜く力」と「自立心」</span></div>
+                <p class="impact-text">
+                    キャンプ体験や登山を通じ、自分の力でゴールを目指す過程を大切にします。火をおこす、テントを張る、山頂まで歩く。これらの「本物の体験」は、何事にも動じない強い心を育みます。
+                </p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-head"><span class="impact-icon">🤝</span><span class="impact-title">「社会性」と「協調性」</span></div>
+                <p class="impact-text">
+                    自然の中では、一人ではできないことがたくさんあります。仲間と協力して火を囲んだり、収穫を助け合ったりする中で、他者を思いやる心とコミュニケーション能力が自然に身につきます。
+                </p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-head"><span class="impact-icon">💡</span><span class="impact-title">「好奇心」と「探究心」</span></div>
+                <p class="impact-text">
+                    水辺の生き物観察や星空学習。自ら発見し、「なぜ？」と考える時間は、学びへの意欲を劇的に高めます。この好奇心の種が、将来の主体的な学習姿勢へと繋がります。
+                </p>
+            </div>
+
+            <h2>充実のサービス内容</h2>
+            
+            <div class="service-item">
+                <div class="service-num">1</div>
+                <div class="service-body">
+                    <h3>専門ガイドによる安全指導</h3>
+                    <p>野外活動のプロが同行し、安全第一で体験をリードします。</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-num">2</div>
+                <div class="service-body">
+                    <h3>必要な装備のフルレンタル</h3>
+                    <p>道具の準備は不要。手ぶらで本格的なキャンプや農業を体験できます。</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-num">3</div>
+                <div class="service-body">
+                    <h3>成長を記録する体験レポート</h3>
+                    <p>活動中の様子をまとめたPDFレポートをお届け。お子様の変化を実感できます。</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-num">4</div>
+                <div class="service-body">
+                    <h3>傷害保険加入と送迎サービス</h3>
+                    <p>万が一への備えと、忙しいご家族のための送迎もプランに含まれています。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fixed-footer">
+            <a href="price.html" class="nav-link">詳しい料金プランを確認する ＞</a>
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで相談・申し込む</a>
+        </div>
+    </div>
+</body>
+</html>

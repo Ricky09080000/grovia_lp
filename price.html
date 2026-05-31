@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | 料金一覧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root { --main-color: #FBC02D; --bg-color: #fffbf0; --text-color: #333; --swim-color: #00BFFF; --sit-color: #FFD700; --nature-color: #6DAE45; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 100px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; }
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .page-header { background-color: var(--main-color); padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-link { color: white; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+        .content { padding: 30px 20px; }
+        .price-header { text-align: center; margin-bottom: 20px; margin-top: 40px; }
+        .price-header h2 { display: inline-block; font-family: 'Shippori Mincho', serif; font-size: 1.4rem; border-bottom: 3px solid #ddd; padding-bottom: 5px; color: #333; }
+        .price-header span { display: block; font-size: 0.8rem; color: #888; margin-top: 5px; }
+        .price-section { background: white; border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
+        .type-swim { border-color: var(--swim-color); background: #f0faff; }
+        .type-sit { border-color: var(--sit-color); background: #fffde7; }
+        .type-nature { border-color: var(--nature-color); background: #f1f8e9; }
+        .sec-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; padding-bottom: 5px; display: flex; align-items: center; }
+        .price-list { list-style: none; padding: 0; margin: 0; }
+        .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed #ddd; }
+        .price-row:last-child { border-bottom: none; }
+        .item-name { font-weight: bold; font-size: 0.95rem; color: #333; width: 65%; }
+        .item-name small { display: block; font-size: 0.75rem; color: #666; font-weight: normal; }
+        .item-price { font-weight: bold; font-size: 1.1rem; color: #333; text-align: right; width: 35%; }
+        .important-note { background: #fff3e0; border: 1px solid #ffb74d; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #e65100; font-weight: bold; margin-bottom: 20px; }
+        .free-box { background: white; border-radius: 10px; padding: 15px; margin-top: 15px; font-size: 0.85rem; border: 1px dashed #ccc; }
+        .check-list span { display: inline-block; background: #eee; padding: 3px 8px; border-radius: 4px; margin: 2px; font-size: 0.75rem; }
+        .note-text { font-size: 0.75rem; color: #666; margin-top: 20px; background: #eee; padding: 15px; border-radius: 8px; }
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; justify-content: center; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+        .nav-link { display: block; text-align: center; color: var(--water-blue); font-size: 0.9rem; font-weight: bold; margin-top: 10px; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link"><span class="back-arrow">◀</span> 料金一覧</a>
+        </div>
+        
+        <img src="header_visual.jpg" alt="Growvia Price" class="main-visual">
+        
+        <div class="content">
+            <div class="price-header">
+                <h2>Swimming</h2>
+                <span>スイミングパーソナル</span>
+            </div>
+            <div class="price-section type-swim">
+                <div class="important-note">
+                    ⚠️ 送迎時間を含め1.5h〜1.75hを超える場合は「シッティング＋スイミング」プランへ自動変更となります。
+                </div>
+                <ul class="price-list">
+                    <li class="price-row"><span class="item-name">個人レッスン (1回)</span><span class="item-price">¥6,500</span></li>
+                    <li class="price-row"><span class="item-name">水嫌い克服 (1回×4セット)</span><span class="item-price">¥6,300<small>/回</small></span></li>
+                    <li class="price-row"><span class="item-name">兄弟/姉妹レッスン</span><span class="item-price">¥7,500</span></li>
+                    <li class="price-row"><span class="item-name">友達と一緒にレッスン</span><span class="item-price">¥5,000<small>/人</small></span></li>
+                </ul>
+                <div class="free-box">
+                    <strong>無料サービス:</strong><br>
+                    <div class="check-list"><span>送迎(片道10分以内)</span><span>着替えサポート</span><span>道具レンタル</span><span>指導レポート</span><span>進級カード</span></div>
+                </div>
+                <a href="swim_personal.html" class="nav-link">スイミング詳細ページへ ＞</a>
+            </div>
+
+            <div class="price-header">
+                <h2>Sitting</h2>
+                <span>シッティング・保育</span>
+            </div>
+            <div class="price-section type-sit">
+                <ul class="price-list">
+                    <li class="price-row"><span class="item-name">基本料金 (〜3時間)</span><span class="item-price">¥3,000<small>/1H</small></span></li>
+                    <li class="price-row"><span class="item-name">長時間割引 (3時間超〜)</span><span class="item-price">¥2,900<small>/1H</small></span></li>
+                    <li class="price-row"><span class="item-name">送迎サービス</span><span class="item-price">¥1,500<small>/片道</small></span></li>
+                    <li class="price-row"><span class="item-name">当日/前日予約</span><span class="item-price">+¥1,000</span></li>
+                    <li class="price-row"><span class="item-name">土日祝日対応</span><span class="item-price">+¥500</span></li>
+                    <li class="price-row"><span class="item-name">早朝夜間帯(21:00〜9:00)</span><span class="item-price">+¥500<small>/1H</small></span></li>
+                    <li class="price-row"><span class="item-name">複数人対応(一人につき)</span><span class="item-price">+¥500<small>/1H</small></span></li>
+                    <li class="price-row"><span class="item-name">スイミングパーソナル (45分)</span><span class="item-price">+¥2000<small></small></span></li>
+                    <li class="price-row"><span class="item-name">運動能力向上レッスン (45分)</span><span class="item-price">+¥1000<small></small></span></li>
+                    <li class="price-row"><span class="item-name">本格カメラ写真撮影 (10枚)</span><span class="item-price">+¥5000<small></small></span></li>
+                </ul>
+                <div class="free-box">
+                    <strong>込み込みサービス:</strong><br>
+                    <div class="check-list"><span>0歳児(3ヶ月〜)</span><span>寝かしつけ</span><span>食事サポート</span><span>屋外対応</span><span>スマホ撮影データ</span></div>
+                </div>
+                <a href="sitting.html" class="nav-link">シッティング詳細ページへ ＞</a>
+            </div>
+
+            <div class="price-header">
+                <h2>Nature Experience</h2>
+                <span>非認知能力育成遠足</span>
+            </div>
+            <div class="price-section type-nature">
+                <div class="important-note" style="background:#e8f5e9; border-color:#81c784; color:#2e7d32;">
+                    ⚠️ お出かけ先で生じる施設利用料・入場料等は別途お客様負担となります。
+                </div>
+                <ul class="price-list">
+                    <li class="price-row"><span class="item-name">海水浴体験</span><span class="item-price">問い合わせ</span></li>
+                    <li class="price-row"><span class="item-name">川遊び体験</span><span class="item-price">問い合わせ</span></li>
+                    <li class="price-row"><span class="item-name">海釣り体験</span><span class="item-price">問い合わせ</span></li>
+                    <li class="price-row"><span class="item-name">⛺ キャンプ体験 (1泊)</span><span class="item-price">問い合わせ</span></li>
+                    <li class="price-row"><span class="item-name">🏔️ 登山＆ハイキング</span><span class="item-price">問い合わせ</span></li>
+                </ul>
+                <div class="free-box">
+                    <strong>プランに含まれるもの:</strong><br>
+                    <div class="check-list"><span>専門ガイド</span><span>道具レンタル</span><span>写真20枚</span><span>保険加入</span><span>体験レポート</span></div>
+                </div>
+                <a href="expedition.html" class="nav-link">遠足詳細ページへ ＞</a>
+            </div>
+
+            <div class="note-text">
+                <strong>🗓️ キャンセルポリシー</strong><br>
+                ・48時間前まで：無料<br>
+                ・24〜48時間前：50%<br>
+                ・24時間以内：100%<br><br>
+                <strong>⚠️ その他お知らせ</strong><br>
+                ・別途、往復交通費を頂戴いたします。<br>
+                ・最低2時間からご予約可能です。<br>
+                ・提携医療機関はございません。万が一の際は近隣施設を利用します。
+            </div>
+        </div>
+        
+        <div class="fixed-footer">
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

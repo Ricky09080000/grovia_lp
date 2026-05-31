@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growvia | スイミングパーソナル</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- デザイン設定 --- */
+        :root { --swim-blue: #00BFFF; --bg-color: #f0faff; --text-color: #333; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Noto Sans JP', sans-serif; color: var(--text-color); line-height: 1.8; padding-bottom: 120px; }
+        a { text-decoration: none; } img { max-width: 100%; height: auto; vertical-align: bottom; }
+        
+        .mobile-container { max-width: 480px; margin: 0 auto; background: white; min-height: 100vh; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+
+        /* 青帯ヘッダー */
+        .page-header {
+            background-color: var(--swim-blue);
+            padding: 15px 20px;
+            display: flex; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .back-link { color: white; font-weight: bold; font-size: 1rem; display: flex; align-items: center; }
+        .back-arrow { margin-right: 10px; font-size: 1.2rem; }
+
+        /* メインビジュアル */
+        .main-visual { width: 100%; height: auto; }
+
+        /* コンテンツエリア */
+        .content { padding: 30px 20px; }
+        h2 { 
+            color: var(--swim-blue); font-size: 1.2rem; 
+            border-bottom: 2px solid var(--swim-blue); 
+            padding-bottom: 5px; margin-top: 40px; margin-bottom: 20px; 
+            font-weight: bold; font-family: 'Shippori Mincho', serif;
+        }
+
+        /* 料金カード */
+        .price-card {
+            background: #fff; border: 2px solid var(--swim-blue);
+            border-radius: 15px; padding: 20px; margin-bottom: 20px;
+        }
+        .price-item { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed #eee; }
+        .price-item:last-child { border-bottom: none; }
+        .item-name { font-weight: bold; font-size: 0.95rem; }
+        .item-price { font-weight: bold; font-size: 1.2rem; color: var(--swim-blue); }
+
+        /* 特徴・進級基準エリア */
+        .feature-box { background: #e1f5fe; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+        .step-tag { display: inline-block; background: var(--swim-blue); color: white; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; margin-bottom: 5px; }
+
+        /* 固定フッター */
+        .fixed-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 20px; pointer-events: none; }
+        .cta-btn { background: #06C755; color: white; width: 90%; max-width: 440px; padding: 15px; text-align: center; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(6,199,85,0.3); pointer-events: auto; }
+        .nav-link { background: white; color: var(--swim-blue); width: 80%; max-width: 400px; padding: 10px; text-align: center; border-radius: 30px; border: 1px solid var(--swim-blue); font-size: 0.85rem; font-weight: bold; pointer-events: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+        .note { font-size: 0.75rem; color: #666; margin-top: 10px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="page-header">
+            <a href="index.html" class="back-link">
+                <span class="back-arrow">◀</span> スイミングパーソナル
+            </a>
+        </div>
+
+        <img src="header_visual.jpg" alt="Swimming" class="main-visual">
+
+        <div class="content">
+            <p style="font-weight:bold; color:var(--swim-blue); text-align:center; font-family:'Shippori Mincho'; font-size:1.1rem; margin-bottom:30px;">
+                水への恐怖心を「できた！」の喜びに変える、<br>完全オーダーメイドの個人レッスン。
+            </p>
+
+            <h2>Growviaが選ばれる理由</h2>
+            <div class="feature-box">
+                <span class="step-tag">15段階の進級基準</span>
+                <p style="margin:0; font-size:0.85rem;">「お顔つけ」から「バタフライ」まで、独自のスモールステップでお子様の成長を可視化。無理なく上達できます。</p>
+            </div>
+            <div class="feature-box" style="background: #fff8e1;">
+                <span class="step-tag" style="background: #fbc02d;">お楽しみシールカード</span>
+                <p style="margin:0; font-size:0.85rem;">合格するたびにシールが貼れる進級カードをご用意！宝箱を目指して、遊び感覚でお子様のやる気を引き出します。</p>
+            </div>
+            <div class="feature-box" style="background: #e8f5e9;">
+                <span class="step-tag" style="background: #6dae45;">保育プロの送迎付き</span>
+                <p style="margin:0; font-size:0.85rem;">ご自宅からプールまでの送迎・お着替えサポートも込み。忙しい親御様に代わって、コーチが責任を持って対応します。</p>
+            </div>
+
+            <h2>レッスン料金</h2>
+            <div class="price-card">
+                <div class="price-item">
+                    <span class="item-name">単発レッスン (45分)</span>
+                    <span class="item-price">¥6,500</span>
+                </div>
+                <div class="price-item">
+                    <span class="item-name">友達と一緒にレッスン<br><small style="color:#888;">(各ご家庭毎)</small></span>
+                    <span class="item-price">¥5,000/<small>人</small></span>
+                </div>
+                <div class="price-item">
+                    <span class="item-name">水嫌い克服 (4回セット推奨)</span>
+                    <span class="item-price">¥25,200</span>
+                </div>
+                <div class="price-item">
+                    <span class="item-name">兄弟/姉妹ペア (1回)</span>
+                    <span class="item-price">¥7,500</span>
+                </div>
+            </div>
+
+            <div style="background:#f9f9f9; padding:15px; border-radius:10px; font-size:0.85rem;">
+                <strong>🎁 全プラン無料サービス:</strong><br>
+                ・送迎 (ご自宅⇔プール施設)<br>
+                ・お着替えサポート (15分)<br>
+                ・水泳用品レンタル (ヘルパー/ゴーグル等)<br>
+                ・進級カード
+            </div>
+
+            <p class="note">
+                ※全レッスン、往復交通費を別途頂戴いたします。<br>
+                ※4回セットは2ヶ月以内に消化してください（返金不可）。<br>
+                ※送迎を含め1.5h〜1.75hを超える場合はシッティング併用プランとなります。
+            </p>
+
+            <h2>進級のステップ</h2>
+            <p style="font-size:0.85rem;">お子様のレベルに合わせて15級〜1級までステップアップ！</p>
+            <div style="font-size:0.75rem; border:1px solid #ddd; border-radius:10px; overflow:hidden;">
+                <div style="display:flex; background:#00BFFF; color:white; padding:5px;">
+                    <div style="width:25%;">レベル</div><div style="width:75%;">主な目標</div>
+                </div>
+                <div style="display:flex; padding:8px; border-bottom:1px solid #eee;">
+                    <div style="width:25%; font-weight:bold;">15-13級</div><div style="width:75%;">お顔つけ・お水の中で息を吐く</div>
+                </div>
+                <div style="display:flex; padding:8px; border-bottom:1px solid #eee; background:#fcfcfc;">
+                    <div style="width:25%; font-weight:bold;">12-10級</div><div style="width:75%;">バタ足・背浮きで浮かぶ</div>
+                </div>
+                <div style="display:flex; padding:8px; border-bottom:1px solid #eee;">
+                    <div style="width:25%; font-weight:bold;">9-6級</div><div style="width:75%;">クロール・背泳ぎ 12.5m〜</div>
+                </div>
+                <div style="display:flex; padding:8px;">
+                    <div style="width:25%; font-weight:bold;">5-1級</div><div style="width:75%;">平泳ぎ・バタフライ 25m完泳</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fixed-footer">
+            <a href="price.html" class="nav-link">全てのメニューの料金を確認する ＞</a>
+            <a href="https://lin.ee/wk6HUo6" class="cta-btn">LINEで予約・相談する</a>
+        </div>
+    </div>
+</body>
+</html>

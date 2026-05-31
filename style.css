@@ -1,0 +1,240 @@
+/* --- デザインテーマ設定（あの画像から色を抽出しました） --- */
+:root {
+    --text-color: #333;
+    --bg-color: #FAFAFA;
+    
+    /* 水と森のイメージカラー */
+    --water-blue: #008C99;   /* プールの水のような深いシアン */
+    --forest-green: #6DAE45; /* 自然の明るい緑 */
+    --tech-purple: #6A5ACD;  /* AI/先進性の紫 */
+    
+    --font-gothic: 'Noto Sans JP', sans-serif;
+    --font-mincho: 'Shippori Mincho', serif; /* 上品な明朝体 */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-gothic);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.8;
+}
+
+h1, h2, h3 { margin: 0; font-family: var(--font-mincho); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* --- 1. ヒーローエリア --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000; /* 画像読み込み前の背景 */
+}
+
+.hero-image-box {
+    width: 100%;
+    /* スマホでもPCでも画像が綺麗に見えるように調整 */
+    display: flex;
+    justify-content: center;
+}
+
+.main-visual {
+    width: 100%;
+    max-width: 1200px; /* PCで大きすぎないように */
+    height: auto;
+    display: block;
+}
+
+/* 画像の下に浮いているようなボタン */
+.hero-btn-area {
+    text-align: center;
+    padding: 20px 0 40px;
+    background: linear-gradient(to bottom, #fff0, #fff 20%); /* 画像との境目を自然に */
+    margin-top: -5px; /* 隙間埋め */
+}
+
+.btn-floating {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--water-blue), var(--forest-green));
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 140, 153, 0.4);
+    transition: transform 0.3s;
+}
+
+.btn-floating:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 140, 153, 0.6);
+}
+
+/* --- 2. コンセプト --- */
+.philosophy {
+    padding: 60px 0 100px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--water-blue), var(--forest-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.text-body {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+.highlight {
+    background: linear-gradient(transparent 70%, #dfffd6 70%);
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+/* --- 3. Advantage --- */
+.advantage {
+    padding: 80px 0;
+    background-color: #f4f8f4; /* ごく薄い緑 */
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--water-blue);
+    margin-bottom: 5px;
+}
+.section-sub-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+}
+
+.advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    border-top: 4px solid transparent;
+}
+
+.card:nth-child(1) { border-color: var(--water-blue); }
+.card:nth-child(2) { border-color: var(--forest-green); }
+.card:nth-child(3) { border-color: var(--tech-purple); }
+
+.card-number {
+    font-family: var(--font-mincho);
+    font-size: 3.5rem;
+    color: #eee;
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    z-index: 0;
+}
+
+.card h3 {
+    position: relative;
+    z-index: 1;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+/* タグの色分け */
+.tag-blue { color: var(--water-blue); border: 1px solid var(--water-blue); font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.tag-green { color: var(--forest-green); border: 1px solid var(--forest-green); font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.tag-tech { color: white; background: var(--tech-purple); font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+
+.app-img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 15px;
+}
+.caption { font-size: 0.8rem; color: #888; text-align: center; margin-top: 5px; }
+
+/* --- 4. Service --- */
+.service {
+    padding: 80px 0;
+    /* 森と水のグラデーション背景 */
+    background: linear-gradient(135deg, var(--water-blue), var(--forest-green));
+    color: white;
+}
+.section-heading-white {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.service-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-item {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 30px 20px;
+    border-radius: 15px;
+    width: 28%;
+    min-width: 260px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+.service-desc { font-size: 0.95rem; color: #555; }
+
+/* --- 5. Profile --- */
+.profile { padding: 100px 0; text-align: center; }
+
+.job-title {
+    color: var(--water-blue);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+.name { font-size: 2.5rem; margin-bottom: 30px; }
+.name-jp { font-size: 1.2rem; font-weight: normal; }
+.message { max-width: 600px; margin: 0 auto; text-align: left; display: inline-block; }
+
+/* --- 6. Footer --- */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 60px 0 30px;
+}
+.btn-line {
+    background: #06C755;
+    color: white;
+    padding: 15px 60px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 30px 0;
+}
+.copyright { color: #666; font-size: 0.8rem; }
