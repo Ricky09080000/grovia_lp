@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIBot プラン診断｜Growvia for Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root{
+  --green:#2d8a58;--green-d:#1a5c3a;--green-pale:#e8f5ee;--green-mid:#4aad72;
+  --sky:#5bb8d4;--sky-pale:#e8f7fb;
+  --sun:#f5a623;--sun-pale:#fff8ed;--sun-l:#ffd166;
+  --coral:#ff6b6b;--coral-pale:#fff0f0;
+  --purple:#9b6dff;--purple-pale:#f3efff;
+  --cream:#fffdf7;--white:#ffffff;
+  --dark:#2c3e2d;--gray:#7a8c7b;--gray-l:#f0f5f1;
+  --border:rgba(45,138,88,0.12);
+  --shadow:0 4px 20px rgba(45,138,88,0.08);
+  --shadow-card:0 8px 32px rgba(45,138,88,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--dark);min-height:100vh;overflow-x:hidden;}
+
+/* 背景の装飾 */
+body::before{content:'';position:fixed;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(91,184,212,0.12) 0%,transparent 70%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(45,138,88,0.1) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,253,247,0.92);backdrop-filter:blur(16px);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.header-logo{display:flex;align-items:center;gap:8px;}
+.header-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.header-logo-text{font-size:15px;font-weight:700;color:var(--green-d);}
+.header-logo-text span{color:var(--sun);}
+.header-badge{font-size:11px;font-weight:700;color:var(--green);background:var(--green-pale);padding:4px 12px;border-radius:20px;border:1px solid rgba(45,138,88,0.2);}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:48px 24px 56px;text-align:center;overflow:hidden;}
+.hero-deco{position:absolute;font-size:80px;opacity:0.07;pointer-events:none;}
+.hero-deco-1{top:10px;left:5%;}
+.hero-deco-2{top:20px;right:5%;}
+.hero-deco-3{bottom:10px;left:15%;}
+.hero-deco-4{bottom:5px;right:15%;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--green);background:var(--green-pale);border:1.5px solid rgba(45,138,88,0.2);padding:6px 16px;border-radius:20px;margin-bottom:20px;}
+.hero-badge i{font-size:14px;color:var(--sun);}
+.hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(24px,5vw,38px);font-weight:700;color:var(--dark);line-height:1.4;margin-bottom:14px;}
+.hero h1 .hl{color:var(--green);position:relative;display:inline-block;}
+.hero h1 .hl::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sun),var(--green-mid));border-radius:2px;}
+.hero-sub{font-size:14px;color:var(--gray);line-height:1.8;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.hero-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;border:1.5px solid;}
+.chip-green{color:var(--green-d);background:var(--green-pale);border-color:rgba(45,138,88,0.2);}
+.chip-sky{color:#2a7a94;background:var(--sky-pale);border-color:rgba(91,184,212,0.3);}
+.chip-sun{color:#c47d00;background:var(--sun-pale);border-color:rgba(245,166,35,0.3);}
+.hero-chip i{font-size:14px;}
+
+/* MAIN */
+.main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:28px 20px 60px;}
+
+/* PROGRESS */
+.progress-wrap{margin-bottom:28px;}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.progress-label{font-size:13px;font-weight:700;color:var(--green-d);}
+.progress-count{font-size:13px;font-weight:700;color:var(--green);}
+.progress-bar{height:8px;background:var(--green-pale);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--green),var(--sun));border-radius:4px;transition:width 0.5s cubic-bezier(.4,0,.2,1);}
+
+/* STEP CARD */
+.step{display:none;}
+.step.active{display:block;}
+.step-card{background:var(--white);border-radius:24px;padding:28px 24px;box-shadow:var(--shadow-card);border:1px solid var(--border);}
+.step-q-num{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);background:var(--green-pale);padding:4px 12px;border-radius:12px;margin-bottom:14px;}
+.step-q-num i{font-size:13px;color:var(--sun);}
+.step-q-text{font-family:'Shippori Mincho',serif;font-size:clamp(17px,4vw,21px);font-weight:600;color:var(--dark);line-height:1.5;margin-bottom:22px;}
+
+/* OPTIONS */
+.options{display:flex;flex-direction:column;gap:10px;}
+.option{display:flex;align-items:center;gap:14px;padding:14px 16px;border:2px solid var(--border);border-radius:16px;cursor:pointer;transition:all 0.2s;background:var(--cream);}
+.option:hover{border-color:var(--green-mid);background:var(--green-pale);transform:translateX(4px);}
+.option.selected{border-color:var(--green);background:var(--green-pale);transform:translateX(4px);}
+.option-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--white);border:1.5px solid var(--border);transition:all 0.2s;}
+.option-icon i{font-size:22px;color:var(--gray);transition:all 0.2s;}
+.option:hover .option-icon,.option.selected .option-icon{background:var(--green);border-color:var(--green);}
+.option:hover .option-icon i,.option.selected .option-icon i{color:var(--white);}
+.option-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;transition:all 0.2s;}
+.option-check i{font-size:13px;color:transparent;}
+.option.selected .option-check{background:var(--green);border-color:var(--green);}
+.option.selected .option-check i{color:var(--white);}
+.option-body{flex:1;}
+.option-label{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.option-sub{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;}
+.btn-back{font-size:13px;font-weight:500;color:var(--gray);cursor:pointer;padding:10px 0;display:flex;align-items:center;gap:4px;transition:color 0.2s;}
+.btn-back:hover{color:var(--dark);}
+.btn-back i{font-size:16px;}
+.btn-next{font-size:14px;font-weight:700;padding:13px 32px;border-radius:50px;cursor:pointer;border:none;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+.btn-next i{font-size:16px;}
+.btn-next:disabled{background:var(--gray-l);color:var(--gray);cursor:not-allowed;transform:none !important;}
+.btn-next.ready{background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%);color:var(--white);box-shadow:0 4px 16px rgba(45,138,88,0.35);}
+.btn-next.ready:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,138,88,0.4);}
+
+/* RESULT */
+.result{display:none;}
+
+.result-confetti{text-align:center;font-size:40px;margin-bottom:8px;animation:bounce 0.6s ease;}
+@keyframes bounce{0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.2);}100%{transform:scale(1);opacity:1;}}
+
+.result-hero{text-align:center;padding:24px 0 20px;}
+.result-label{font-size:11px;font-weight:700;letter-spacing:0.15em;color:var(--green);text-transform:uppercase;margin-bottom:8px;}
+.result-plan{font-family:'Shippori Mincho',serif;font-size:clamp(24px,6vw,34px);font-weight:700;color:var(--dark);margin-bottom:8px;}
+.result-sub{font-size:14px;color:var(--gray);line-height:1.6;}
+.result-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--green-d);background:var(--green-pale);padding:8px 18px;border-radius:20px;border:1.5px solid rgba(45,138,88,0.25);margin:14px 0;}
+.result-badge i{font-size:16px;color:var(--sun);}
+
+.plan-card{border:2.5px solid var(--green);border-radius:20px;padding:24px;background:var(--white);margin-bottom:16px;box-shadow:var(--shadow-card);}
+.plan-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.plan-card-name{font-size:13px;font-weight:700;color:var(--gray);letter-spacing:0.06em;}
+.plan-card-tag{font-size:11px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--green),var(--green-mid));padding:4px 12px;border-radius:20px;}
+.plan-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:4px;}
+.plan-price{font-size:38px;font-weight:900;color:var(--green-d);}
+.plan-price-unit{font-size:14px;color:var(--gray);}
+.plan-initial{font-size:13px;color:var(--green);font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:4px;}
+.plan-divider{border:none;border-top:1.5px dashed var(--border);margin:16px 0;}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.plan-features li{font-size:13px;color:var(--dark);display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+.plan-features li i{font-size:17px;color:var(--green);flex-shrink:0;margin-top:1px;}
+.plan-period{font-size:12px;color:var(--gray);margin-top:14px;padding-top:14px;border-top:1.5px dashed var(--border);display:flex;align-items:center;gap:6px;}
+.plan-period i{font-size:14px;color:var(--sky);}
+
+.reason-box{background:linear-gradient(135deg,var(--sun-pale) 0%,var(--green-pale) 100%);border-radius:18px;padding:20px;margin-bottom:18px;border:1.5px solid rgba(245,166,35,0.2);}
+.reason-title{font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--green-d);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.reason-title i{font-size:16px;color:var(--sun);}
+.reason-text{font-size:13px;color:var(--dark);line-height:1.9;}
+
+.others-title{font-size:13px;font-weight:700;color:var(--gray);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.others-title i{font-size:15px;color:var(--sky);}
+.other-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;}
+.other-card{border:1.5px solid var(--border);border-radius:16px;padding:16px;background:var(--white);transition:all 0.2s;}
+.other-card:hover{border-color:var(--green-mid);box-shadow:var(--shadow);}
+.other-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:2px;}
+.other-price{font-size:12px;color:var(--green);font-weight:700;margin-bottom:10px;}
+.other-features{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.other-features li{font-size:11px;color:var(--gray);display:flex;align-items:flex-start;gap:5px;line-height:1.4;}
+.other-features li i{font-size:12px;color:var(--green-mid);flex-shrink:0;margin-top:1px;}
+
+.cta-section{display:flex;flex-direction:column;gap:10px;}
+.btn-cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border-radius:50px;font-size:15px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--green-d),var(--green-mid));border:none;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(26,92,58,0.35);text-decoration:none;}
+.btn-cta-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,92,58,0.45);}
+.btn-cta-primary i{font-size:20px;}
+.btn-line{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:50px;font-size:14px;font-weight:700;color:var(--white);background:#06c755;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 16px rgba(6,199,85,0.3);}
+.btn-line:hover{transform:translateY(-2px);}
+.btn-line i{font-size:18px;}
+.btn-cta-secondary{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:14px;border-radius:50px;font-size:14px;font-weight:500;color:var(--green-d);background:var(--white);border:2px solid var(--border);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-cta-secondary:hover{border-color:var(--green-mid);background:var(--green-pale);}
+
+.restart{text-align:center;margin-top:14px;font-size:12px;color:var(--gray);cursor:pointer;padding:8px;transition:color 0.2s;display:flex;align-items:center;justify-content:center;gap:4px;}
+.restart:hover{color:var(--dark);}
+.restart i{font-size:14px;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--green-d);padding:24px;text-align:center;}
+.footer-logo{font-size:15px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:6px;}
+.footer-logo span{color:var(--sun-l);}
+.footer-text{font-size:11px;color:rgba(255,255,255,0.35);}
+
+@media(max-width:480px){
+  .other-grid{grid-template-columns:1fr;}
+  .hero{padding:36px 20px 44px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">
+    <div class="header-logo-icon">🌱</div>
+    <div class="header-logo-text">Growvia <span>for Business</span></div>
+  </div>
+  <div class="header-badge">プラン診断</div>
+</div>
+
+<div class="hero">
+  <div class="hero-deco hero-deco-1">🌈</div>
+  <div class="hero-deco hero-deco-2">🌿</div>
+  <div class="hero-deco hero-deco-3">⭐</div>
+  <div class="hero-deco hero-deco-4">🎵</div>
+  <div class="hero-badge"><i class="ti ti-sparkles"></i>PLAN DIAGNOSIS</div>
+  <h1>あなたの施設に<br><span class="hl">最適なプラン</span>を診断します</h1>
+  <p class="hero-sub">7つの質問に答えるだけで、最適なAIBotプランをご提案します。<br>所要時間は約2分です。</p>
+  <div class="hero-chips">
+    <div class="hero-chip chip-green"><i class="ti ti-clock"></i>所要時間：約2分</div>
+    <div class="hero-chip chip-sky"><i class="ti ti-shield-check"></i>登録不要・無料</div>
+    <div class="hero-chip chip-sun"><i class="ti ti-device-mobile"></i>スマホ対応</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span class="progress-label" id="progressLabel">質問 1 / 7</span>
+      <span class="progress-count" id="progressCount">14%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:14%"></div></div>
+  </div>
+
+  <!-- STEP 0 -->
+  <div class="step active" id="step0">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-building"></i>Question 01</div>
+      <div class="step-q-text">施設の種類を教えてください。</div>
+      <div class="options">
+        <div class="option" data-step="0" data-val="hoiku" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-building"></i></div>
+          <div class="option-body"><div class="option-label">保育園・幼稚園・こども園</div><div class="option-sub">認可・認可外・企業主導型など</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="0" data-val="lesson" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-school"></i></div>
+          <div class="option-body"><div class="option-label">習い事・スクール・学童</div><div class="option-sub">スイミング・英語・体操・ピアノなど</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="0" data-val="other" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-building-store"></i></div>
+          <div class="option-body"><div class="option-label">その他の施設・事業者</div><div class="option-sub">中小企業・サロン・クリニックなど</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span></span><button class="btn-next" id="next0" disabled onclick="goNext(1)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step" id="step1">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-messages"></i>Question 02</div>
+      <div class="step-q-text">月間の問い合わせ件数はどのくらいですか？</div>
+      <div class="options">
+        <div class="option" data-step="1" data-val="few" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-messages"></i></div>
+          <div class="option-body"><div class="option-label">少ない（10件未満）</div><div class="option-sub">月に数件程度の問い合わせ</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="1" data-val="medium" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-messages"></i></div>
+          <div class="option-body"><div class="option-label">普通（10〜30件）</div><div class="option-sub">週に数件の対応が発生している</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="1" data-val="many" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-messages"></i></div>
+          <div class="option-body"><div class="option-label">多い（30件以上）</div><div class="option-sub">毎日問い合わせ対応に追われている</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(0)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next1" disabled onclick="goNext(2)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step" id="step2">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-help-circle"></i>Question 03</div>
+      <div class="step-q-text">特に対応に困っている問い合わせは？</div>
+      <div class="options">
+        <div class="option" data-step="2" data-val="price" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-coin"></i></div>
+          <div class="option-body"><div class="option-label">料金・プランについて</div><div class="option-sub">「月謝は？」「何歳から？」などの繰り返し質問</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="2" data-val="visit" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-calendar"></i></div>
+          <div class="option-body"><div class="option-label">見学・体験・予約について</div><div class="option-sub">「見学したい」「体験申込みは？」など</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="2" data-val="all" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-list"></i></div>
+          <div class="option-body"><div class="option-label">あらゆる質問が多い</div><div class="option-sub">料金・時間・持ち物・行事など幅広い</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(1)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next2" disabled onclick="goNext(3)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step" id="step3">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-moon"></i>Question 04</div>
+      <div class="step-q-text">営業時間外の問い合わせ対応はどうしていますか？</div>
+      <div class="options">
+        <div class="option" data-step="3" data-val="ignore" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-moon"></i></div>
+          <div class="option-body"><div class="option-label">翌営業日まで放置している</div><div class="option-sub">夜・休日の問い合わせは後回しになっている</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="3" data-val="personal" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-device-mobile"></i></div>
+          <div class="option-body"><div class="option-label">個人のスマホで対応している</div><div class="option-sub">プライベートの時間まで対応が及んでいる</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="3" data-val="auto" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-robot"></i></div>
+          <div class="option-body"><div class="option-label">自動応答を設定しているが不十分</div><div class="option-sub">LINEの自動返信などを使っているが限界がある</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(2)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next3" disabled onclick="goNext(4)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step" id="step4">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-star"></i>Question 05</div>
+      <div class="step-q-text">近々、特別なイベントや説明会の予定はありますか？</div>
+      <div class="options">
+        <div class="option" data-step="4" data-val="soon" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-star"></i></div>
+          <div class="option-body"><div class="option-label">ある（1〜3ヶ月以内）</div><div class="option-sub">入園説明会・発表会・体験会など</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="4" data-val="maybe" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-clock"></i></div>
+          <div class="option-body"><div class="option-label">半年以内にある予定</div><div class="option-sub">まだ先だが準備は早めにしたい</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="4" data-val="none" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-calendar-off"></i></div>
+          <div class="option-body"><div class="option-label">特にない・通常業務のみ</div><div class="option-sub">日常の問い合わせ自動化が主な目的</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(3)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next4" disabled onclick="goNext(5)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step" id="step5">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-chart-bar"></i>Question 06</div>
+      <div class="step-q-text">月次レポート（問い合わせ件数・頻出質問の報告）は必要ですか？</div>
+      <div class="options">
+        <div class="option" data-step="5" data-val="yes" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-chart-bar"></i></div>
+          <div class="option-body"><div class="option-label">ほしい</div><div class="option-sub">データをもとにサービス改善をしたい</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="5" data-val="maybe" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-chart-line"></i></div>
+          <div class="option-body"><div class="option-label">あればうれしい</div><div class="option-sub">必須ではないが参考になりそう</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="5" data-val="no" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-x"></i></div>
+          <div class="option-body"><div class="option-label">不要</div><div class="option-sub">まずはBotが動けばそれで十分</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(4)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next5" disabled onclick="goNext(6)">次へ <i class="ti ti-arrow-right"></i></button></div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step" id="step6">
+    <div class="step-card">
+      <div class="step-q-num"><i class="ti ti-heart"></i>Question 07</div>
+      <div class="step-q-text">導入にあたって最も重視することは？</div>
+      <div class="options">
+        <div class="option" data-step="6" data-val="cost" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-pig-money"></i></div>
+          <div class="option-body"><div class="option-label">費用をできるだけ抑えたい</div><div class="option-sub">まずは低コストで試してみたい</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="6" data-val="quality" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-award"></i></div>
+          <div class="option-body"><div class="option-label">精度・品質を重視したい</div><div class="option-sub">保護者に満足してもらえる高精度なBotを</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+        <div class="option" data-step="6" data-val="speed" onclick="selectOption(this)">
+          <div class="option-icon"><i class="ti ti-bolt"></i></div>
+          <div class="option-body"><div class="option-label">できるだけ早く使い始めたい</div><div class="option-sub">スピード重視・今すぐ自動化したい</div></div>
+          <div class="option-check"><i class="ti ti-check"></i></div>
+        </div>
+      </div>
+      <div class="nav"><span class="btn-back" onclick="goBack(5)"><i class="ti ti-arrow-left"></i>戻る</span><button class="btn-next" id="next6" disabled onclick="showResult()">診断結果を見る <i class="ti ti-sparkles"></i></button></div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result" id="result">
+    <div class="result-confetti" id="confetti">🎉</div>
+    <div class="result-hero">
+      <div class="result-label">診断結果</div>
+      <div class="result-plan" id="rPlanName"></div>
+      <div class="result-sub" id="rPlanSub"></div>
+      <div class="result-badge"><i class="ti ti-sparkles"></i>あなたにおすすめのプランです ✅</div>
+    </div>
+    <div class="plan-card" id="rCard"></div>
+    <div class="reason-box">
+      <div class="reason-title"><i class="ti ti-bulb"></i>このプランをおすすめする理由</div>
+      <div class="reason-text" id="rReason"></div>
+    </div>
+    <div style="margin-bottom:20px;">
+      <div class="others-title"><i class="ti ti-arrows-exchange"></i>他のプランと比較する</div>
+      <div class="other-grid" id="rOthers"></div>
+    </div>
+    <div class="cta-section">
+      <a href="https://lin.ee/PXZaBvj" class="btn-line"><i class="ti ti-brand-line"></i>LINEで詳しく相談する（無料）</a>
+      <a href="./business.html" class="btn-cta-secondary"><i class="ti ti-external-link"></i>サービス詳細ページを見る</a>
+    </div>
+    <div class="restart" onclick="restart()"><i class="ti ti-refresh"></i>最初からやり直す</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Growvia <span>for Business</span></div>
+  <div class="footer-text">© 2026 Growvia for Business. 保育・教育特化AIサービス</div>
+</footer>
+
+<script>
+const answers={};
+const plans={
+  light:{name:'ライトプラン',sub:'まず試してみたい方に最適',price:'8,800円',unit:'/月（税込）',initial:'✅ 初期費用：無料キャンペーン中',period:'最低契約期間：3ヶ月',features:['FAQ自動回答Bot構築','LINEリッチメニューへの設置','QRコード発行','ナレッジ更新 月1回','チャットサポート（平日10〜18時）']},
+  standard:{name:'スタンダードプラン',sub:'本格的に業務効率化を図りたい方に',price:'16,500円',unit:'/月（税込）',initial:'✅ 初期費用：無料キャンペーン中',period:'最低契約期間：3ヶ月',features:['高精度Q&A Bot（RAG対応）','LINEリッチメニュー設置','QRコード発行・デザイン制作','ナレッジ更新 月3回','月次レポート提供','保護者向け周知文の提供']},
+  event:{name:'短期イベントプラン',sub:'イベント・説明会に特化した2ヶ月集中プラン',price:'27,500円',unit:'/月（税込）',initial:'✅ 2ヶ月固定契約',period:'運動会・発表会・入園説明会向け',features:['イベント専用Bot構築','LINEリッチメニュー設置','QRコード・印刷データ提供','ナレッジ更新 無制限','即日対応サポート']}
+};
+const reasons={
+  light:'問い合わせ件数・ご予算・導入目的から判断すると、まずシンプルなプランで自動化の効果を体感していただくことをおすすめします。3ヶ月お試しいただき、効果を確認してからアップグレードする方法が最もリスクの少ない導入方法です。初期費用無料キャンペーン中なので、今が始め時です。',
+  standard:'問い合わせ件数・業務効率化への意欲・月次レポートへのニーズから判断すると、本格的な高精度Botが最も効果を発揮します。RAG対応で幅広い質問に精度高く回答でき、月次レポートでPDCAも回せます。初期費用無料キャンペーン中なので、ぜひこの機会にご導入ください。',
+  event:'近々イベント・説明会のご予定があることから、イベント特化型の短期集中プランが最適です。QRコードをチラシや看板に印刷することで、当日の問い合わせを全て自動化できます。終了後はスタンダードプランへの移行も可能です。'
+};
+
+function selectOption(el){
+  const s=el.dataset.step;
+  document.querySelectorAll(`[data-step="${s}"]`).forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[s]=el.dataset.val;
+  const btn=document.getElementById(`next${s}`);
+  btn.disabled=false;btn.classList.add('ready');
+}
+
+function updateProgress(n){
+  const pct=Math.round(((n+1)/7)*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressLabel').textContent=`質問 ${n+1} / 7`;
+  document.getElementById('progressCount').textContent=pct+'%';
+}
+
+function goNext(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById(`step${n}`).classList.add('active');
+  updateProgress(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goBack(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById(`step${n}`).classList.add('active');
+  updateProgress(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function calcPlan(){
+  let s={light:0,standard:0,event:0};
+  if(answers[4]==='soon'){s.event+=4;}
+  if(answers[4]==='maybe'){s.event+=1;s.standard+=1;}
+  if(answers[1]==='many'){s.standard+=2;}
+  if(answers[1]==='medium'){s.standard+=1;}
+  if(answers[1]==='few'){s.light+=2;}
+  if(answers[2]==='all'){s.standard+=2;}
+  if(answers[5]==='yes'){s.standard+=2;}
+  if(answers[5]==='no'){s.light+=1;}
+  if(answers[6]==='cost'){s.light+=3;}
+  if(answers[6]==='quality'){s.standard+=3;}
+  if(answers[6]==='speed'){s.standard+=1;s.light+=1;}
+  if(answers[3]==='personal'){s.standard+=2;}
+  return Object.entries(s).sort((a,b)=>b[1]-a[1])[0][0];
+}
+
+function showResult(){
+  const pk=calcPlan();const p=plans[pk];
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.progress-wrap').style.display='none';
+  document.getElementById('result').style.display='block';
+  document.getElementById('rPlanName').textContent=p.name;
+  document.getElementById('rPlanSub').textContent=p.sub;
+  document.getElementById('rReason').textContent=reasons[pk];
+  document.getElementById('rCard').innerHTML=`
+    <div class="plan-card-header"><span class="plan-card-name">${p.name}</span><span class="plan-card-tag">おすすめ ✨</span></div>
+    <div class="plan-price-row"><span class="plan-price">${p.price}</span><span class="plan-price-unit">${p.unit}</span></div>
+    <div class="plan-initial">${p.initial}</div>
+    <hr class="plan-divider">
+    <ul class="plan-features">${p.features.map(f=>`<li><i class="ti ti-check-circle"></i>${f}</li>`).join('')}</ul>
+    <div class="plan-period"><i class="ti ti-clock"></i>${p.period}</div>
+  `;
+  const others=Object.entries(plans).filter(([k])=>k!==pk);
+  document.getElementById('rOthers').innerHTML=others.map(([k,pl])=>`
+    <div class="other-card">
+      <div class="other-name">${pl.name}</div>
+      <div class="other-price">${pl.price}${pl.unit}</div>
+      <ul class="other-features">${pl.features.slice(0,3).map(f=>`<li><i class="ti ti-circle-check"></i>${f}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+  window.scrollTo({top:0,behavior:'smooth'});
+  const emojis=['🎉','🌈','⭐','🎊','✨'];
+  let i=0;
+  const timer=setInterval(()=>{
+    document.getElementById('confetti').textContent=emojis[i%emojis.length];
+    i++;if(i>=10)clearInterval(timer);
+  },200);
+}
+
+function restart(){
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  document.getElementById('result').style.display='none';
+  document.querySelector('.progress-wrap').style.display='block';
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step0').classList.add('active');
+  document.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+  document.querySelectorAll('.btn-next').forEach(b=>{b.disabled=true;b.classList.remove('ready');});
+  updateProgress(0);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
